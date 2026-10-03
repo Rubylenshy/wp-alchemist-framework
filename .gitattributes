@@ -1,0 +1,6 @@
+# Keep the installed package to runtime code only (Composer dist archives and Strauss both honour this).
+/tests export-ignore
+/phpunit.xml.dist export-ignore
+/phpcs.xml.dist export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
