@@ -122,11 +122,19 @@ abstract class Plugin
     /**
      * Runs migrations when the plugin was updated without being re-activated
      * (WordPress does not fire the activation hook on updates).
+     *
+     * During development (WP_DEBUG on, or a non-production environment type)
+     * it also picks up newly added migration files without a version bump.
      */
     public function maybeUpgrade(): void
     {
         if (get_option($this->config->option('version')) !== $this->config->version) {
             $this->upgrade();
+            return;
+        }
+
+        if ($this->isDevelopment() && $this->migrator()->pending() !== []) {
+            $this->migrator()->migrate();
         }
     }
 
@@ -193,6 +201,11 @@ abstract class Plugin
     protected function migrationsPath(): string
     {
         return $this->config->path('database/migrations');
+    }
+
+    protected function isDevelopment(): bool
+    {
+        return (defined('WP_DEBUG') && WP_DEBUG) || wp_get_environment_type() !== 'production';
     }
 
     private function upgrade(): void
