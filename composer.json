@@ -2,8 +2,19 @@
     "name": "wp-alchemist/framework",
     "description": "Runtime helpers for WordPress plugins scaffolded with wp-alchemist: lifecycle, modules, REST routing, Vite assets, migrations, settings and support helpers.",
     "type": "library",
-    "license": "Apache-2.0",
-    "keywords": ["wordpress", "plugin", "framework", "vite", "rest"],
+    "license": "MIT",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "framework",
+        "vite",
+        "rest"
+    ],
+    "homepage": "https://github.com/Rubylenshy/wp-alchemist",
+    "support": {
+        "issues": "https://github.com/Rubylenshy/wp-alchemist/issues",
+        "source": "https://github.com/Rubylenshy/wp-alchemist/tree/main/packages/framework"
+    },
     "require": {
         "php": ">=8.1"
     },
